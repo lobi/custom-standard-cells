@@ -1,0 +1,43 @@
+# version: "3.9"
+
+services:
+  openlane:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: openlane
+    volumes:
+      - ./designs:/work/designs
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${PDK_ROOT}:/opt/pdk:ro
+    environment:
+      - DISPLAY=${DISPLAY}
+    working_dir: /work
+    stdin_open: true
+    tty: true
+
+  magic:
+    image: efabless/openlane:latest
+    volumes:
+      - ./designs:/work
+      - ${PDK_ROOT}:/opt/pdk
+    working_dir: /work
+    entrypoint: ["magic"]
+
+  # netgen:
+  #   image: efabless/openlane:latest
+  #   volumes:
+  #     - ./designs:/work
+  #     - ${PDK_ROOT}:/opt/pdk
+  #   working_dir: /work
+  #   entrypoint: ["netgen"]
+
+  # xschem:
+  #   build:
+  #     context: .
+  #     dockerfile: xschem.dockerfile
+  #   volumes:
+  #     - .:/workspace
+  #     - /tmp/.X11-unix:/tmp/.X11-unix
+  #   environment:
+  #     - DISPLAY=${DISPLAY}
