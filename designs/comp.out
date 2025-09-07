@@ -1,16 +1,4 @@
 
-Circuit 1 cell sky130_fd_pr__diode_pw2nd_05v5_lvt is a black box; will not flatten Circuit 2
-Warning: Equate pins:  cell sky130_fd_pr__diode_pw2nd_05v5_lvt is a placeholder, treated as a black box.
-
-Subcircuit pins:
-Circuit 1: sky130_fd_pr__diode_pw2nd_05v5_ |Circuit 2: sky130_fd_pr__diode_pw2nd_05v5_ 
--------------------------------------------|-------------------------------------------
-(no matching pin)                          |N                                          
-(no matching pin)                          |P                                          
----------------------------------------------------------------------------------------
-Cell pin lists for sky130_fd_pr__diode_pw2nd_05v5_lvt and sky130_fd_pr__diode_pw2nd_05v5_lvt altered to match.
-Device classes sky130_fd_pr__diode_pw2nd_05v5_lvt and sky130_fd_pr__diode_pw2nd_05v5_lvt are equivalent.
-
 Circuit 1 cell sky130_fd_pr__nfet_01v8 is a black box; will not flatten Circuit 2
 Warning: Equate pins:  cell sky130_fd_pr__nfet_01v8 is a placeholder, treated as a black box.
 
@@ -39,240 +27,98 @@ Circuit 1: sky130_fd_pr__pfet_01v8         |Circuit 2: sky130_fd_pr__pfet_01v8
 Cell pin lists for sky130_fd_pr__pfet_01v8 and sky130_fd_pr__pfet_01v8 altered to match.
 Device classes sky130_fd_pr__pfet_01v8 and sky130_fd_pr__pfet_01v8 are equivalent.
 
-Class and (0):  Merged 12 parallel devices.
 Subcircuit summary:
-Circuit 1: and                             |Circuit 2: and                             
+Circuit 1: inverter                        |Circuit 2: inverter                        
 -------------------------------------------|-------------------------------------------
-sky130_fd_pr__diode_pw2nd_05v5_lvt (14->2) |(no matching element)                      
-sky130_fd_pr__nfet_01v8 (3)                |sky130_fd_pr__nfet_01v8 (3)                
-sky130_fd_pr__pfet_01v8 (3)                |sky130_fd_pr__pfet_01v8 (3)                
-Number of devices: 8 **Mismatch**          |Number of devices: 6 **Mismatch**          
-Number of nets: 36 **Mismatch**            |Number of nets: 31 **Mismatch**            
+sky130_fd_pr__nfet_01v8 (1)                |sky130_fd_pr__nfet_01v8 (1)                
+sky130_fd_pr__pfet_01v8 (1)                |sky130_fd_pr__pfet_01v8 (1)                
+Number of devices: 2                       |Number of devices: 2                       
+Number of nets: 12                         |Number of nets: 12                         
 ---------------------------------------------------------------------------------------
 NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: and                             |Circuit 2: and                             
+Circuit 1: inverter                        |Circuit 2: inverter                        
 
 ---------------------------------------------------------------------------------------
-Net: a_70_n330#                            |Net: net1                                  
-  sky130_fd_pr__nfet_01v8/(1|3) = 3        |  sky130_fd_pr__nfet_01v8/s = 1            
-  sky130_fd_pr__pfet_01v8/(1|3) = 2        |  sky130_fd_pr__nfet_01v8/b = 1            
-  sky130_fd_pr__pfet_01v8/2 = 1            |  sky130_fd_pr__nfet_01v8/d = 1            
-  sky130_fd_pr__nfet_01v8/2 = 1            |                                           
+Net: dummy_12                              |Net: dummy_12                              
+  sky130_fd_pr__pfet_01v8/proxyb = 1       |  sky130_fd_pr__pfet_01v8/proxy4 = 1       
                                            |                                           
-Net: GND                                   |Net: dummy_8                               
-  sky130_fd_pr__diode_pw2nd_05v5_lvt/2 = 1 |  sky130_fd_pr__nfet_01v8/proxy1 = 1       
-  sky130_fd_pr__nfet_01v8/(1|3) = 2        |                                           
-                                           |                                           
-Net: dummy_9                               |Net: dummy_9                               
-  sky130_fd_pr__diode_pw2nd_05v5_lvt/proxy |  sky130_fd_pr__nfet_01v8/proxy2 = 1       
-                                           |                                           
-Net: dummy_10                              |Net: dummy_10                              
-  sky130_fd_pr__diode_pw2nd_05v5_lvt/proxy |  sky130_fd_pr__nfet_01v8/proxy3 = 1       
-                                           |                                           
-Net: w_n170_0#                             |Net: dummy_11                              
-  sky130_fd_pr__pfet_01v8/4 = 3            |  sky130_fd_pr__nfet_01v8/proxy4 = 1       
-                                           |                                           
-Net: dummy_37                              |Net: dummy_12                              
-  sky130_fd_pr__nfet_01v8/proxyd = 1       |  sky130_fd_pr__nfet_01v8/proxy1 = 1       
-                                           |                                           
-Net: dummy_13                              |Net: dummy_13                              
-  sky130_fd_pr__diode_pw2nd_05v5_lvt/proxy |  sky130_fd_pr__nfet_01v8/proxy2 = 1       
-                                           |                                           
-Net: dummy_14                              |Net: dummy_14                              
-  sky130_fd_pr__diode_pw2nd_05v5_lvt/proxy |  sky130_fd_pr__nfet_01v8/proxy3 = 1       
-                                           |                                           
-Net: dummy_41                              |Net: dummy_15                              
-  sky130_fd_pr__nfet_01v8/proxyd = 1       |  sky130_fd_pr__nfet_01v8/proxy4 = 1       
-                                           |                                           
-Net: dummy_38                              |Net: dummy_16                              
-  sky130_fd_pr__nfet_01v8/proxyg = 1       |  sky130_fd_pr__nfet_01v8/proxy1 = 1       
-                                           |                                           
-Net: dummy_42                              |Net: dummy_17                              
-  sky130_fd_pr__nfet_01v8/proxyg = 1       |  sky130_fd_pr__nfet_01v8/proxy2 = 1       
-                                           |                                           
-Net: dummy_39                              |Net: dummy_18                              
-  sky130_fd_pr__nfet_01v8/proxys = 1       |  sky130_fd_pr__nfet_01v8/proxy3 = 1       
-                                           |                                           
-Net: dummy_43                              |Net: dummy_19                              
-  sky130_fd_pr__nfet_01v8/proxys = 1       |  sky130_fd_pr__nfet_01v8/proxy4 = 1       
-                                           |                                           
-Net: dummy_40                              |Net: dummy_20                              
-  sky130_fd_pr__nfet_01v8/proxyb = 1       |  sky130_fd_pr__pfet_01v8/proxy1 = 1       
-                                           |                                           
-Net: dummy_44                              |Net: dummy_24                              
-  sky130_fd_pr__nfet_01v8/proxyb = 1       |  sky130_fd_pr__pfet_01v8/proxy1 = 1       
-                                           |                                           
-Net: dummy_45                              |Net: dummy_21                              
-  sky130_fd_pr__nfet_01v8/proxyd = 1       |  sky130_fd_pr__pfet_01v8/proxy2 = 1       
-                                           |                                           
-Net: dummy_46                              |Net: dummy_25                              
-  sky130_fd_pr__nfet_01v8/proxyg = 1       |  sky130_fd_pr__pfet_01v8/proxy2 = 1       
-                                           |                                           
-Net: dummy_47                              |Net: dummy_22                              
-  sky130_fd_pr__nfet_01v8/proxys = 1       |  sky130_fd_pr__pfet_01v8/proxy3 = 1       
-                                           |                                           
-Net: dummy_48                              |Net: dummy_26                              
-  sky130_fd_pr__nfet_01v8/proxyb = 1       |  sky130_fd_pr__pfet_01v8/proxy3 = 1       
-                                           |                                           
-Net: dummy_49                              |Net: dummy_23                              
-  sky130_fd_pr__pfet_01v8/proxyd = 1       |  sky130_fd_pr__pfet_01v8/proxy4 = 1       
-                                           |                                           
-Net: dummy_57                              |Net: dummy_27                              
-  sky130_fd_pr__pfet_01v8/proxyd = 1       |  sky130_fd_pr__pfet_01v8/proxy4 = 1       
-                                           |                                           
-Net: dummy_50                              |Net: dummy_28                              
-  sky130_fd_pr__pfet_01v8/proxyg = 1       |  sky130_fd_pr__pfet_01v8/proxy1 = 1       
-                                           |                                           
-Net: dummy_58                              |Net: dummy_29                              
-  sky130_fd_pr__pfet_01v8/proxyg = 1       |  sky130_fd_pr__pfet_01v8/proxy2 = 1       
-                                           |                                           
-Net: dummy_51                              |Net: dummy_30                              
+Net: dummy_11                              |Net: dummy_11                              
   sky130_fd_pr__pfet_01v8/proxys = 1       |  sky130_fd_pr__pfet_01v8/proxy3 = 1       
                                            |                                           
-Net: dummy_59                              |Net: dummy_31                              
-  sky130_fd_pr__pfet_01v8/proxys = 1       |  sky130_fd_pr__pfet_01v8/proxy4 = 1       
+Net: dummy_10                              |Net: dummy_10                              
+  sky130_fd_pr__pfet_01v8/proxyg = 1       |  sky130_fd_pr__pfet_01v8/proxy2 = 1       
                                            |                                           
-Net: dummy_52                              |Net: VDD                                   
-  sky130_fd_pr__pfet_01v8/proxyb = 1       |  sky130_fd_pr__pfet_01v8/s = 3            
-                                           |  sky130_fd_pr__pfet_01v8/b = 3            
+Net: dummy_9                               |Net: dummy_9                               
+  sky130_fd_pr__pfet_01v8/proxyd = 1       |  sky130_fd_pr__pfet_01v8/proxy1 = 1       
                                            |                                           
-Net: dummy_60                              |(no matching net)                          
-  sky130_fd_pr__pfet_01v8/proxyb = 1       |                                           
+Net: dummy_8                               |Net: dummy_8                               
+  sky130_fd_pr__nfet_01v8/proxyb = 1       |  sky130_fd_pr__nfet_01v8/proxy4 = 1       
                                            |                                           
-Net: dummy_53                              |(no matching net)                          
-  sky130_fd_pr__pfet_01v8/proxyd = 1       |                                           
+Net: dummy_7                               |Net: dummy_7                               
+  sky130_fd_pr__nfet_01v8/proxys = 1       |  sky130_fd_pr__nfet_01v8/proxy3 = 1       
                                            |                                           
-Net: dummy_54                              |(no matching net)                          
-  sky130_fd_pr__pfet_01v8/proxyg = 1       |                                           
+Net: dummy_6                               |Net: dummy_6                               
+  sky130_fd_pr__nfet_01v8/proxyg = 1       |  sky130_fd_pr__nfet_01v8/proxy2 = 1       
                                            |                                           
-Net: dummy_55                              |(no matching net)                          
-  sky130_fd_pr__pfet_01v8/proxys = 1       |                                           
-                                           |                                           
-Net: dummy_56                              |(no matching net)                          
-  sky130_fd_pr__pfet_01v8/proxyb = 1       |                                           
+Net: dummy_5                               |Net: dummy_5                               
+  sky130_fd_pr__nfet_01v8/proxyd = 1       |  sky130_fd_pr__nfet_01v8/proxy1 = 1       
 ---------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------
-Net: Y                                     |Net: Y                                     
-  sky130_fd_pr__pfet_01v8/(1|3) = 1        |  sky130_fd_pr__pfet_01v8/d = 1            
-  sky130_fd_pr__nfet_01v8/(1|3) = 1        |  sky130_fd_pr__nfet_01v8/d = 1            
+Net: VP                                    |Net: VDD                                   
+  sky130_fd_pr__pfet_01v8/(1|3) = 1        |  sky130_fd_pr__pfet_01v8/s = 1            
+  sky130_fd_pr__pfet_01v8/4 = 1            |  sky130_fd_pr__pfet_01v8/b = 1            
                                            |                                           
-Net: B                                     |Net: B                                     
-  sky130_fd_pr__nfet_01v8/2 = 1            |  sky130_fd_pr__pfet_01v8/g = 1            
-  sky130_fd_pr__pfet_01v8/2 = 1            |  sky130_fd_pr__nfet_01v8/g = 1            
+Net: VN                                    |Net: GND                                   
+  sky130_fd_pr__nfet_01v8/(1|3) = 1        |  sky130_fd_pr__nfet_01v8/s = 1            
+  sky130_fd_pr__nfet_01v8/4 = 1            |  sky130_fd_pr__nfet_01v8/b = 1            
                                            |                                           
 Net: A                                     |Net: A                                     
   sky130_fd_pr__nfet_01v8/2 = 1            |  sky130_fd_pr__nfet_01v8/g = 1            
   sky130_fd_pr__pfet_01v8/2 = 1            |  sky130_fd_pr__pfet_01v8/g = 1            
----------------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------------
-Net: VDD                                   |Net: GND                                   
-  sky130_fd_pr__diode_pw2nd_05v5_lvt/2 = 1 |  sky130_fd_pr__nfet_01v8/s = 2            
-  sky130_fd_pr__pfet_01v8/(1|3) = 3        |  sky130_fd_pr__nfet_01v8/b = 2            
----------------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------------
-Net: VSUBS                                 |Net: net2                                  
-  sky130_fd_pr__diode_pw2nd_05v5_lvt/1 = 2 |  sky130_fd_pr__nfet_01v8/d = 1            
-  sky130_fd_pr__nfet_01v8/4 = 3            |  sky130_fd_pr__pfet_01v8/d = 2            
-                                           |  sky130_fd_pr__pfet_01v8/g = 1            
-                                           |  sky130_fd_pr__nfet_01v8/g = 1            
+                                           |                                           
+Net: B                                     |Net: Y                                     
+  sky130_fd_pr__nfet_01v8/(1|3) = 1        |  sky130_fd_pr__nfet_01v8/d = 1            
+  sky130_fd_pr__pfet_01v8/(1|3) = 1        |  sky130_fd_pr__pfet_01v8/d = 1            
 ---------------------------------------------------------------------------------------
 DEVICE mismatches: Class fragments follow (with node fanout counts):
-Circuit 1: and                             |Circuit 2: and                             
+Circuit 1: inverter                        |Circuit 2: inverter                        
 
 ---------------------------------------------------------------------------------------
-Instance: sky130_fd_pr__diode_pw2nd_05v5_l |(no matching instance)                     
-  1 = 5                                    |                                           
-  2 = 4                                    |                                           
-  proxyN = 1                               |                                           
-  proxyP = 1                               |                                           
-                                           |                                           
-Instance: sky130_fd_pr__diode_pw2nd_05v5_l |(no matching instance)                     
-  1 = 5                                    |                                           
-  2 = 3                                    |                                           
-  proxyN = 1                               |                                           
-  proxyP = 1                               |                                           
----------------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------------
-Instance: sky130_fd_pr__pfet_01v8:15       |Instance: sky130_fd_pr__pfet_01v8:M5       
-  (1,3) = (7,4)                            |  proxy1 = 1                               
+Instance: sky130_fd_pr__pfet_01v8:1        |Instance: sky130_fd_pr__pfet_01v8:M2       
+  (1,3) = (2,2)                            |  proxy1 = 1                               
   2 = 2                                    |  proxy2 = 1                               
-  4 = 3                                    |  proxy3 = 1                               
+  4 = 2                                    |  proxy3 = 1                               
   proxyd = 1                               |  proxy4 = 1                               
   proxyg = 1                               |  d = 2                                    
-  proxys = 1                               |  g = 5                                    
-  proxyb = 1                               |  s = 6                                    
-                                           |  b = 6                                    
-                                           |                                           
-Instance: sky130_fd_pr__pfet_01v8:5        |Instance: sky130_fd_pr__pfet_01v8:M3       
-  (1,3) = (7,4)                            |  proxy1 = 1                               
-  2 = 2                                    |  proxy2 = 1                               
-  4 = 3                                    |  proxy3 = 1                               
-  proxyd = 1                               |  proxy4 = 1                               
-  proxyg = 1                               |  d = 5                                    
   proxys = 1                               |  g = 2                                    
-  proxyb = 1                               |  s = 6                                    
-                                           |  b = 6                                    
-                                           |                                           
-Instance: sky130_fd_pr__pfet_01v8:8        |Instance: sky130_fd_pr__pfet_01v8:M2       
-  (1,3) = (4,2)                            |  proxy1 = 1                               
-  2 = 7                                    |  proxy2 = 1                               
-  4 = 3                                    |  proxy3 = 1                               
-  proxyd = 1                               |  proxy4 = 1                               
-  proxyg = 1                               |  d = 5                                    
-  proxys = 1                               |  g = 2                                    
-  proxyb = 1                               |  s = 6                                    
-                                           |  b = 6                                    
+  proxyb = 1                               |  s = 2                                    
+                                           |  b = 2                                    
 ---------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------
-Instance: sky130_fd_pr__nfet_01v8:10       |Instance: sky130_fd_pr__nfet_01v8:M6       
-  (1,3) = (3,2)                            |  proxy1 = 1                               
-  2 = 7                                    |  proxy2 = 1                               
-  4 = 5                                    |  proxy3 = 1                               
+Instance: sky130_fd_pr__nfet_01v8:0        |Instance: sky130_fd_pr__nfet_01v8:M1       
+  (1,3) = (2,2)                            |  proxy1 = 1                               
+  2 = 2                                    |  proxy2 = 1                               
+  4 = 2                                    |  proxy3 = 1                               
   proxyd = 1                               |  proxy4 = 1                               
   proxyg = 1                               |  d = 2                                    
-  proxys = 1                               |  g = 5                                    
-  proxyb = 1                               |  s = 4                                    
-                                           |  b = 4                                    
-                                           |                                           
-Instance: sky130_fd_pr__nfet_01v8:7        |Instance: sky130_fd_pr__nfet_01v8:M4       
-  (1,3) = (7,3)                            |  proxy1 = 1                               
-  2 = 2                                    |  proxy2 = 1                               
-  4 = 5                                    |  proxy3 = 1                               
-  proxyd = 1                               |  proxy4 = 1                               
-  proxyg = 1                               |  d = 3                                    
   proxys = 1                               |  g = 2                                    
-  proxyb = 1                               |  s = 4                                    
-                                           |  b = 4                                    
-                                           |                                           
-Instance: sky130_fd_pr__nfet_01v8:2        |Instance: sky130_fd_pr__nfet_01v8:M1       
-  (1,3) = (7,7)                            |  proxy1 = 1                               
-  2 = 2                                    |  proxy2 = 1                               
-  4 = 5                                    |  proxy3 = 1                               
-  proxyd = 1                               |  proxy4 = 1                               
-  proxyg = 1                               |  d = 5                                    
-  proxys = 1                               |  g = 2                                    
-  proxyb = 1                               |  s = 3                                    
-                                           |  b = 3                                    
+  proxyb = 1                               |  s = 2                                    
+                                           |  b = 2                                    
 ---------------------------------------------------------------------------------------
 Netlists do not match.
 Port matching may fail to disambiguate symmetries.
 
 Subcircuit pins:
-Circuit 1: and                             |Circuit 2: and                             
+Circuit 1: inverter                        |Circuit 2: inverter                        
 -------------------------------------------|-------------------------------------------
-GND                                        |(no pin, node is dummy_8)                  
-Y                                          |Y                                          
-A                                          |B **Mismatch**                             
-B                                          |A **Mismatch**                             
-VDD                                        |GND **Mismatch**                           
-(no pin, node is dummy_56)                 |VDD                                        
+VP                                         |VDD **Mismatch**                           
+VN                                         |GND **Mismatch**                           
+A                                          |A                                          
+B                                          |Y **Mismatch**                             
 ---------------------------------------------------------------------------------------
-Cell pin lists for and and and altered to match.
-Device classes and and and are equivalent.
+Cell pin lists for inverter and inverter altered to match.
+Device classes inverter and inverter are equivalent.
 
 Final result: Top level cell failed pin matching.
