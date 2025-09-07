@@ -10,6 +10,9 @@ N -50 -10 -40 -10 {lab=Va}
 N -0 -50 -0 -40 {lab=VDD}
 N 0 40 0 50 {lab=GND}
 N -50 10 -40 10 {lab=Vb}
+N 50 -0 60 0 {lab=Vout}
+N -40 -10 -30 -10 {lab=Va}
+N -40 10 -30 10 {lab=Vb}
 C {vdd.sym} 0 -50 0 0 {name=l1 lab=VDD}
 C {gnd.sym} 0 50 0 0 {name=l2 lab=GND}
 C {lab_pin.sym} -50 -10 0 0 {name=p1 sig_type=std_logic lab=Va
@@ -34,10 +37,10 @@ C {code_shown.sym} 90 50 0 0 {name=SPICE only_toplevel=false value=".tran 0.01u 
 .save all" }
 C {lab_pin.sym} -210 0 1 0 {name=p3 sig_type=std_logic lab=Va
 }
-C {/home/ubvm/unic-cass/nand/nand.sym} 0 0 0 0 {name=x1}
 C {lab_pin.sym} -50 10 0 0 {name=p4 sig_type=std_logic lab=Vb
 }
-C {vsource.sym} -210 -80 0 0 {name=Vin1 value="pulse(0 1.8 0 50ps 50ps 20ns 40ns)" savecurrent=false}
+C {vsource.sym} -210 -80 0 0 {name=Vin1 value="pulse(1.8 0 0 50ps 50ps 20ns 40ns)" savecurrent=false}
 C {gnd.sym} -210 -50 0 0 {name=l6 lab=GND}
 C {lab_pin.sym} -210 -110 1 0 {name=p5 sig_type=std_logic lab=Vb
 }
+C {/home/ubvm/unic-cass/xschem/or/or.sym} 0 0 0 0 {name=x1}
