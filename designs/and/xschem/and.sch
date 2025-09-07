@@ -41,7 +41,7 @@ N 170 120 170 140 {lab=xxx}
 N 320 -300 320 -180 {lab=VDD}
 N 160 -300 320 -300 {lab=VDD}
 N 190 -320 190 -300 {lab=VDD}
-C {/home/ubvm/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/xschem/sky130_fd_pr/nfet_01v8.sym} -20 -30 0 0 {name=M1
+C {/usr/local/share/pdk/sky130A/libs.tech/xschem/sky130_fd_pr/nfet_01v8.sym} -20 -30 0 0 {name=M1
 W=1
 L=0.15
 nf=1 
@@ -55,7 +55,7 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {/home/ubvm/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/xschem/sky130_fd_pr/pfet_01v8.sym} -20 -230 0 0 {name=M2
+C {/usr/local/share/pdk/sky130A/libs.tech/xschem/sky130_fd_pr/pfet_01v8.sym} -20 -230 0 0 {name=M2
 W=1
 L=0.15
 nf=1
@@ -69,7 +69,7 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {/home/ubvm/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/xschem/sky130_fd_pr/pfet_01v8.sym} 140 -230 0 0 {name=M3
+C {/usr/local/share/pdk/sky130A/libs.tech/xschem/sky130_fd_pr/pfet_01v8.sym} 140 -230 0 0 {name=M3
 W=1
 L=0.15
 nf=1
@@ -83,7 +83,7 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {/home/ubvm/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/xschem/sky130_fd_pr/nfet_01v8.sym} -20 70 0 0 {name=M4
+C {/usr/local/share/pdk/sky130A/libs.tech/xschem/sky130_fd_pr/nfet_01v8.sym} -20 70 0 0 {name=M4
 W=1
 L=0.15
 nf=1 
@@ -97,7 +97,7 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {/home/ubvm/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/xschem/sky130_fd_pr/pfet_01v8.sym} 300 -150 0 0 {name=M5
+C {/usr/local/share/pdk/sky130A/libs.tech/xschem/sky130_fd_pr/pfet_01v8.sym} 300 -150 0 0 {name=M5
 W=1
 L=0.15
 nf=1
@@ -111,7 +111,7 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {/home/ubvm/Desktop/chip_design/open_pdks/sky130/sky130A/libs.tech/xschem/sky130_fd_pr/nfet_01v8.sym} 300 -50 0 0 {name=M6
+C {/usr/local/share/pdk/sky130A/libs.tech/xschem/sky130_fd_pr/nfet_01v8.sym} 300 -50 0 0 {name=M6
 W=1
 L=0.15
 nf=1 
@@ -125,8 +125,8 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {ipin.sym} -160 0 0 0 {name=p1 lab=B}
-C {ipin.sym} -160 -120 0 0 {name=p2 lab=A}
-C {opin.sym} 400 -100 0 0 {name=p3 lab=Y}
-C {iopin.sym} 190 -320 3 0 {name=p4 lab=VDD}
-C {iopin.sym} 170 140 1 0 {name=p5 lab=GND}
+C {/usr/share/xschem/xschem_library/devices/ipin.sym} -160 0 0 0 {name=p1 lab=B}
+C {/usr/share/xschem/xschem_library/devices/ipin.sym} -160 -120 0 0 {name=p2 lab=A}
+C {/usr/share/xschem/xschem_library/devices/opin.sym} 400 -100 0 0 {name=p3 lab=Y}
+C {/usr/share/xschem/xschem_library/devices/iopin.sym} 190 -320 3 0 {name=p4 lab=VDD}
+C {/usr/share/xschem/xschem_library/devices/iopin.sym} 170 140 1 0 {name=p5 lab=GND}

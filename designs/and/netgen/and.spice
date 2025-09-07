@@ -1,22 +1,19 @@
-* Include Sky130 PDK models
-*.include "/opt/pdk/sky130A/libs.tech/ngspice/sky130_fd_pr/models.spice"
-
-* NGSPICE file created from andgate.ext - technology: scmos
+* NGSPICE file created from and.ext - technology: scmos
 
 .global Vdd Gnd 
 
-.subckt andgate
-M1000 a_34_n60# a gnd Gnd nfet w=10u l=4u
-+  ad=100p pd=30u as=100p ps=40u
-M1001 vdd b a_34_n60# vdd pfet w=10u l=4u
-+  ad=0.13n pd=46u as=100p ps=30u
-M1002 f a_34_n60# gnd Gnd nfet w=10u l=4u
-+  ad=0.11n pd=42u as=90p ps=38u
-M1003 f a_34_n60# vdd vdd pfet w=10u l=4u
-+  ad=100p pd=40u as=100p ps=40u
-M1004 a_34_n60# b a_34_n60# Gnd nfet w=10u l=4u
+.subckt and
+M1000 a_17_n30# b a_17_n30# Gnd nfet w=10u l=4u
 +  ad=100p pd=30u as=0.34n ps=0.108m
-M1005 a_34_n60# a vdd vdd pfet w=10u l=4u
+M1001 a_17_n30# a vdd vdd pfet w=10u l=4u
 +  ad=100p pd=30u as=0.11n ps=42u
+M1002 f a_17_n30# vdd vdd pfet w=10u l=4u
++  ad=100p pd=40u as=100p ps=40u
+M1003 f a_17_n30# gnd Gnd nfet w=10u l=4u
++  ad=0.11n pd=42u as=90p ps=38u
+M1004 vdd b a_17_n30# vdd pfet w=10u l=4u
++  ad=0.13n pd=46u as=100p ps=30u
+M1005 a_17_n30# a gnd Gnd nfet w=10u l=4u
++  ad=100p pd=30u as=100p ps=40u
 .ends
 
