@@ -62,14 +62,18 @@ Makefile:
 ```bash:
 make xschem
 ```
-set lvs netlist top level:
+Set lvs netlist top level:
 On xschem menu: Simulation -> select LVS netlist: Top Level is a .subckt
 On xschem menu: click Netlist -> .spice file will export to the root folder
 
 ### Netgen
-
+Makefile:
+```bash
+make netgen-openlane
+```
 
 ## Test
+During your implementaion, you need to check 
 Check inside your container
 ```bash
 docker compose run --rm openlane ls /opt/pdk/sky130A/libs.ref/sky130_fd_pr/spice
