@@ -3,9 +3,8 @@ export XSCHEMSYMDIR=~/ChipDesign/openlane-docker/design/inverter/xschem
 
 symbol_path ~/xschem_projects/my_designs/symbols
 
-# Makefile
+# Software installation & project configuration with Makefile
 We use Makefile to simplify the command lines. The whole project's executions can only perform with this Makefile.
-
 Below are some commands to quick start. Please refer to Makfile for more command.
 
 ## Softwares/dependencies: 
@@ -13,12 +12,13 @@ make, git, docker, pdk sky130A, etc.
 
 Xschem will install & run dirrectly on the host OS.
 
+
 Install Xschem:
 ```bash
 make install-xschem-fedora:
 ```
 
-Magic, netgen... will run with OpenLane on Docker container.
+Magic, netgen, ngspice... will run with OpenLane on Docker container.
 
 ## Project Configuration
 **.env:**

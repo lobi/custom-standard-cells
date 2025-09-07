@@ -1,0 +1,19 @@
+* NGSPICE file created from nand.ext - technology: sky130A
+
+.subckt nand A B Y GND VDD
+X0 VSUBS VDD sky130_fd_pr__diode_pw2nd_05v5_lvt perim=800000 area=4e+10
+X1 Y B Y VSUBS sky130_fd_pr__nfet_01v8 ad=0.3025 pd=1.65 as=1.0175 ps=5.9 w=0.55 l=0.25
+X2 VSUBS GND sky130_fd_pr__diode_pw2nd_05v5_lvt perim=800000 area=4e+10
+X3 VSUBS GND sky130_fd_pr__diode_pw2nd_05v5_lvt perim=800000 area=4e+10
+X4 VDD B Y w_n170_0# sky130_fd_pr__pfet_01v8 ad=0.4125 pd=2.6 as=0.3025 ps=1.65 w=0.55 l=0.25
+X5 VSUBS VDD sky130_fd_pr__diode_pw2nd_05v5_lvt perim=800000 area=4e+10
+X6 Y A GND VSUBS sky130_fd_pr__nfet_01v8 ad=0.3025 pd=1.65 as=0.4125 ps=2.6 w=0.55 l=0.25
+X7 VSUBS GND sky130_fd_pr__diode_pw2nd_05v5_lvt perim=800000 area=4e+10
+X8 VSUBS VDD sky130_fd_pr__diode_pw2nd_05v5_lvt perim=800000 area=4e+10
+X9 VSUBS GND sky130_fd_pr__diode_pw2nd_05v5_lvt perim=800000 area=4e+10
+X10 VSUBS GND sky130_fd_pr__diode_pw2nd_05v5_lvt perim=800000 area=4e+10
+X11 Y A VDD w_n170_0# sky130_fd_pr__pfet_01v8 ad=0.3025 pd=1.65 as=0.4125 ps=2.6 w=0.55 l=0.25
+X12 VSUBS VDD sky130_fd_pr__diode_pw2nd_05v5_lvt perim=800000 area=4e+10
+X13 VSUBS VDD sky130_fd_pr__diode_pw2nd_05v5_lvt perim=800000 area=4e+10
+.ends
+
