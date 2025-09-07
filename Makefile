@@ -1,7 +1,7 @@
 # Variables
 PDK_ROOT ?= /usr/local/share/pdk
 OPENLANE_ROOT ?= $(PWD)/openlane
-DESIGN_NAME ?= my_design
+DESIGN_NAME ?= and
 #MAGIC_RCFILE ?= $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc
 #TECH_FILE ?= $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.tech
 PDK_PATH = /opt/pdk
@@ -10,6 +10,10 @@ TECH_FILE ?= $(PDK_PATH)/sky130A/libs.tech/magic/sky130A.tech
 
 MAGIC_RCFILE_LOCAL ?= $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc
 TECH_FILE_LOCAL ?= $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.tech
+
+# Variables for Xschem
+XSCHEM_LIBRARY_PATH = $(PWD)/symbols/devices:$(PWD)/symbols:$(PWD)/designs:/usr/share/xschem/xschem_library/devices:/usr/share/xschem/xschem_library:$(PDK_ROOT)/sky130A/libs.tech/xschem:$(PDK_ROOT)/sky130A/libs.ref/sky130_fd_pr/spice:$(PDK_ROOT)/sky130A/libs.ref/sky130_fd_io/spice
+XSCHEM_RCFILE = $(PDK_ROOT)/sky130A/libs.tech/xschem/xschemrc
 
 DOCKER_COMPOSE = docker compose
 DOCKER_X11 = docker compose run --rm -e DISPLAY=$(DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix
@@ -54,15 +58,15 @@ magic:
 	$(DOCKER_X11) magic -rcfile $(MAGIC_RCFILE) $(DESIGN_NAME).mag -d XR
 
 magic-tech:
-	$(DOCKER_X11) magic -T $(TECH_FILE) $(DESIGN_NAME).mag -d XR
+	$(DOCKER_X11) magic -T $(TECH_FILE) /work/$(DESIGN_NAME)/magic/$(DESIGN_NAME).mag -d XR
 
 magic-gpu:
 	@echo "Running Magic with GPU acceleration..."
-	$(DOCKER_X11_GPU) magic -rcfile $(MAGIC_RCFILE) $(DESIGN_NAME).mag -d XR
+	$(DOCKER_X11_GPU) magic -rcfile $(MAGIC_RCFILE) /work/$(DESIGN_NAME)/magic/$(DESIGN_NAME).mag -d XR
 
 magic-fallback:
 	@echo "Running Magic with software rendering (fallback mode)..."
-	$(DOCKER_X11_FALLBACK) magic -rcfile $(MAGIC_RCFILE) $(DESIGN_NAME).mag -d XR
+	$(DOCKER_X11_FALLBACK) magic -rcfile $(MAGIC_RCFILE) /work/$(DESIGN_NAME)/magic/$(DESIGN_NAME).mag -d XR
 
 setup-x11:
 	@echo "Setting up X11 permissions for Docker..."
@@ -168,14 +172,64 @@ netgen:
 netgen-openlane:
 	$(DOCKER_COMPOSE) run --rm openlane \
 		netgen -batch lvs \
-		"$(DESIGN_NAME).spice $(DESIGN_NAME)" \
-		"$(DESIGN_NAME)_schematic.spice $(DESIGN_NAME)" \
-		$(PDK_ROOT)/sky130A/libs.tech/netgen/sky130A_setup.tcl \
+		"/work/$(DESIGN_NAME)/netgen/$(DESIGN_NAME).spice $(DESIGN_NAME)" \
+		"/work/$(DESIGN_NAME)/netgen/$(DESIGN_NAME)_schematic.spice $(DESIGN_NAME)" \
+		/opt/pdk/sky130A/libs.tech/netgen/sky130A_setup.tcl \
 		| tee netgen_lvs.log
 
 # ------------------------------
-# Xschem
+# Xschem directly on Fedora OS
 # ------------------------------
-.PHONY: xschem
+.PHONY: xschem xschem-symbol xschem-sim install-xschem-fedora xschem-new xschem-netlist xschem-simulate
 xschem:
-	$(DOCKER_X11) xschem xschem $(DESIGN_NAME).sch -d XR
+	@echo "Opening schematic: designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME).sch with sky130 PDK"
+	xschem  designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME).sch
+
+xschem-with-lib:
+	@echo "Opening schematic: designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME).sch with sky130 PDK"
+	XSCHEM_LIBRARY_PATH="$(XSCHEM_LIBRARY_PATH)" xschem -r $(XSCHEM_RCFILE) designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME).sch
+
+xschem-symbol:
+	@echo "Opening symbol: designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME).sym"
+	XSCHEM_LIBRARY_PATH="$(XSCHEM_LIBRARY_PATH)" xschem -r $(XSCHEM_RCFILE) designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME).sym
+
+xschem-sim:
+	@echo "Opening simulation schematic: designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME)_tb.sch"
+	XSCHEM_LIBRARY_PATH="$(XSCHEM_LIBRARY_PATH)" xschem -r $(XSCHEM_RCFILE) designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME)_tb.sch
+
+xschem-new:
+	@echo "Creating new schematic directory structure for $(DESIGN_NAME)..."
+	@mkdir -p designs/$(DESIGN_NAME)/xschem
+	@echo "Starting Xschem for new design with sky130A PDK..."
+	cd designs/$(DESIGN_NAME)/xschem && XSCHEM_LIBRARY_PATH="$(XSCHEM_LIBRARY_PATH)" xschem -r $(XSCHEM_RCFILE)
+
+xschem-netlist:
+	@echo "Generating netlist for $(DESIGN_NAME)..."
+	@if [ -f "designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME).sch" ]; then \
+		cd designs/$(DESIGN_NAME)/xschem && \
+		XSCHEM_LIBRARY_PATH="$(XSCHEM_LIBRARY_PATH)" xschem -r $(XSCHEM_RCFILE) --netlist $(DESIGN_NAME).sch; \
+		echo "Netlist generated: designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME).spice"; \
+	else \
+		echo "Error: Schematic file not found: designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME).sch"; \
+	fi
+
+xschem-simulate:
+	@echo "Running SPICE simulation for $(DESIGN_NAME)..."
+	@if [ -f "designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME)_tb.spice" ]; then \
+		cd designs/$(DESIGN_NAME)/xschem && \
+		ngspice $(DESIGN_NAME)_tb.spice; \
+	elif [ -f "designs/$(DESIGN_NAME)/xschem/$(DESIGN_NAME).spice" ]; then \
+		cd designs/$(DESIGN_NAME)/xschem && \
+		ngspice $(DESIGN_NAME).spice; \
+	else \
+		echo "Error: No SPICE file found. Generate netlist first with 'make xschem-netlist'"; \
+	fi
+
+install-xschem-fedora:
+	@echo "Installing Xschem and dependencies on Fedora..."
+	sudo dnf install -y xschem ngspice gaw
+	@echo "Xschem installation completed!"
+	@echo "Additional packages installed:"
+	@echo "  - xschem: Schematic editor"
+	@echo "  - ngspice: SPICE simulator"
+	@echo "  - gaw: Waveform viewer"

@@ -1,0 +1,30 @@
+Completed: ngspice -b -r /home/ubvm/.xschem/simulations/inverter_tb.raw /home/ubvm/.xschem/simulations/inverter_tb.spice
+data:
+
+Note: No compatibility mode selected!
+
+
+Circuit: ** sch_path: /home/ubvm/unic-cass/inverter/inverter_tb.sch
+
+binary raw file "/home/ubvm/.xschem/simulations/inverter_tb.raw"
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Using SPARSE 1.3 as Direct Linear Solver
+No. of Data Columns : 12  
+
+No. of Data Rows : 181
+
+Total analysis time (seconds) = 0.103614
+
+Total elapsed time (seconds) = 147.086 
+
+Total DRAM available = 7703.641 MB.
+DRAM currently available = 4690.914 MB.
+Maximum ngspice program size =  416.031 MB.
+Current ngspice program size =  350.898 MB.
+
+Shared ngspice pages =   11.004 MB.
+Text (code) pages =    6.371 MB.
+Stack = 0 bytes.
+Library pages =  396.102 MB.
+

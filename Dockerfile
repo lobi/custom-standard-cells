@@ -4,6 +4,7 @@
 FROM ubuntu:22.04 as openlane
 
 # Prevent tzdata from asking questions
+# Set non-interactive frontend
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -20,6 +21,16 @@ RUN apt-get update && apt-get install -y \
     m4 bison flex gawk libreadline-dev libffi-dev \
     libboost-all-dev cmake swig zlib1g-dev \
     xterm vim nano unzip tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
+    apt-get update && \
+    apt-get install -y \
+        git build-essential automake libtool \
+        libx11-dev libxaw7-dev libxpm-dev libxft-dev \
+        tcl-dev tk-dev libcairo2-dev libxrender-dev \
+        bison flex x11-apps \
+        tzdata \
     && rm -rf /var/lib/apt/lists/*
 
 # =====================================

@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: openlane
     volumes:
-      - ./designs:/work/designs
+      - ./designs:/work
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ${PDK_ROOT}:/opt/pdk:ro
     environment:

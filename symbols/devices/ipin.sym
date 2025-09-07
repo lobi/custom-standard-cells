@@ -1,0 +1,15 @@
+v {xschem version=3.4.4 file_version=1.2}
+G {}
+K {type=ipin
+dir=in
+verilog_type=wire
+format="input @name"
+template="name=p1"}
+V {}
+S {}
+E {}
+L 4 -30 0 -20 0 {}
+L 4 -20 -10 -20 10 {}
+L 4 -20 0 0 0 {}
+T {Input Pin} -15 -25 0 0 0.3 0.3 {}
+T {@name} -15 5 0 0 0.2 0.2 {}

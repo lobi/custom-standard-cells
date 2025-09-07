@@ -1,0 +1,15 @@
+v {xschem version=3.4.4 file_version=1.2}
+G {}
+K {type=opin
+dir=out
+verilog_type=wire
+format="output @name"
+template="name=p1"}
+V {}
+S {}
+E {}
+L 4 0 0 20 0 {}
+L 4 20 -10 20 10 {}
+L 4 0 0 20 0 {}
+T {Output Pin} 5 -25 0 0 0.3 0.3 {}
+T {@name} 5 5 0 0 0.2 0.2 {}
