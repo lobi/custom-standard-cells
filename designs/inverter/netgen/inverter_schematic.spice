@@ -1,5 +1,4 @@
-* Include Sky130 PDK models
-.include "/opt/pdk/sky130A/libs.tech/ngspice/sky130_fd_pr/models.spice"
+.include /opt/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice
 ** sch_path: /home/tamnguyen/ChipDesign/openlane-docker/designs/inverter/xschem/inverter.sch
 .subckt inverter A Y VDD GND
 *.PININFO A:I Y:O VDD:B GND:B

@@ -1,7 +1,7 @@
 # Variables
 PDK_ROOT ?= /usr/local/share/pdk
 OPENLANE_ROOT ?= $(PWD)/openlane
-DESIGN_NAME ?= and
+DESIGN_NAME ?= inverter
 #MAGIC_RCFILE ?= $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc
 #TECH_FILE ?= $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.tech
 PDK_PATH = /opt/pdk
