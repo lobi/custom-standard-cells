@@ -171,6 +171,13 @@ ext2spice
 ```
 The `.spice` file will be exported to the root folder.
 
+#### Export GDS File
+```bash
+make magic-gds               # Export GDS using Docker Magic
+make magic-gds-local         # Export GDS using local Magic
+```
+The `.gds` file will be exported to `designs/$(DESIGN_NAME)/results/$(DESIGN_NAME).gds`.
+
 #### Generate Layout Netlist
 From Xschem menu:
 1. **Simulation** → Select **LVS netlist**: Top Level is a `.subckt`
@@ -215,6 +222,8 @@ make xschem-simulate         # Run simulation
 make magic-tech              # Open layout with tech file
 make magic-gpu               # GPU accelerated mode
 make magic-fallback          # Software rendering
+make magic-gds               # Export GDS file (Docker)
+make magic-gds-local         # Export GDS file (local)
 make diagnose-display        # Debug display issues
 
 # Netgen (LVS Verification)

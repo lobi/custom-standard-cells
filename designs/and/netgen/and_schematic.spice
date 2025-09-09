@@ -1,4 +1,4 @@
-.include /opt/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice
+*.include /opt/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice
 ** sch_path: /home/tamnguyen/ChipDesign/openlane-docker/designs/and/xschem/and.sch
 .subckt and B A Y VDD GND
 *.PININFO B:I A:I Y:O VDD:B GND:B

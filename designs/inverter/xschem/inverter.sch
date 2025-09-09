@@ -1,22 +1,22 @@
-v {xschem version=3.4.8RC file_version=1.3}
+v {xschem version=3.4.4 file_version=1.2
+}
 G {}
 K {}
 V {}
 S {}
-F {}
 E {}
-N 0 -40 0 10 {lab=Y}
+N 0 -40 0 10 {lab=B}
 N -60 -70 -40 -70 {lab=A}
 N -60 -70 -60 40 {lab=A}
-N 0 10 0 20 {lab=Y}
-N 0 -10 40 -10 {lab=Y}
+N 0 10 0 20 {lab=B}
+N 0 -10 40 -10 {lab=B}
 N -100 -10 -60 -10 {lab=A}
 N -60 50 -40 50 {lab=A}
 N -60 40 -60 50 {lab=A}
-N -0 -120 0 -100 {lab=VDD}
-N 0 80 0 100 {lab=GND}
-N -0 50 -0 80 {lab=GND}
-N -0 -100 0 -70 {lab=VDD}
+N -0 -120 0 -100 {lab=VP}
+N 0 80 0 100 {lab=VP}
+N -0 50 -0 80 {lab=VP}
+N -0 -100 0 -70 {lab=VP}
 C {/usr/local/share/pdk/sky130A/libs.tech/xschem/sky130_fd_pr/nfet_01v8.sym} -20 50 0 0 {name=M1
 W=1
 L=0.15
@@ -48,8 +48,8 @@ spiceprefix=X
 C {/usr/share/xschem/xschem_library/devices/ipin.sym} -100 -10 0 0 {name=p1 lab=A
 
 }
-C {/usr/share/xschem/xschem_library/devices/opin.sym} 40 -10 0 0 {name=p2 lab=Y
+C {/usr/share/xschem/xschem_library/devices/ipin.sym} 40 -10 0 0 {name=p2 lab=B
 }
-C {/usr/share/xschem/xschem_library/devices/iopin.sym} 0 -120 3 0 {name=p3 lab=VDD
+C {/usr/share/xschem/xschem_library/devices/iopin.sym} 0 -120 3 0 {name=p3 lab=VP
 }
-C {/usr/share/xschem/xschem_library/devices/iopin.sym} 0 100 1 0 {name=p4 lab=GND}
+C {/usr/share/xschem/xschem_library/devices/iopin.sym} 0 100 1 0 {name=p4 lab=VN}

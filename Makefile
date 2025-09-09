@@ -1,7 +1,7 @@
 # Variables
 PDK_ROOT ?= /usr/local/share/pdk
 OPENLANE_ROOT ?= $(PWD)/openlane
-DESIGN_NAME ?= buffer
+DESIGN_NAME ?= inverter
 #MAGIC_RCFILE ?= $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.magicrc
 #TECH_FILE ?= $(PDK_ROOT)/sky130A/libs.tech/magic/sky130A.tech
 PDK_PATH = /opt/pdk
@@ -53,7 +53,7 @@ openlane-shell:
 # ------------------------------
 # Magic
 # ------------------------------
-.PHONY: magic magic-tech install-magic-local magic-local install-magic-fedora clean-magic-build magic-local-tech check-magic-version magic-gpu magic-fallback setup-x11 diagnose-display magic-gpu magic-fallback setup-x11
+.PHONY: magic magic-tech install-magic-local magic-local install-magic-fedora clean-magic-build magic-local-tech check-magic-version magic-gpu magic-fallback setup-x11 diagnose-display magic-gds magic-gds-local
 magic:
 	$(DOCKER_X11) magic -rcfile $(MAGIC_RCFILE) $(DESIGN_NAME).mag -d XR
 
@@ -156,6 +156,27 @@ magic-local:
 
 magic-local-tech:
 	magic -T $(TECH_FILE_LOCAL) $(DESIGN_NAME).mag
+
+# Export GDS file using Magic
+magic-gds:
+	@echo "Exporting GDS file for $(DESIGN_NAME)..."
+	@mkdir -p designs/$(DESIGN_NAME)/results
+	@echo "load $(DESIGN_NAME)" > /tmp/magic_gds.tcl
+	@echo "gds write ../results/$(DESIGN_NAME).gds" >> /tmp/magic_gds.tcl
+	@echo "quit -noprompt" >> /tmp/magic_gds.tcl
+	$(DOCKER_COMPOSE) run --rm -v /tmp/magic_gds.tcl:/tmp/magic_gds.tcl openlane bash -c "cd /work/$(DESIGN_NAME)/magic && magic -dnull -noconsole -T /opt/pdk/sky130A/libs.tech/magic/sky130A.tech < /tmp/magic_gds.tcl"
+	@rm -f /tmp/magic_gds.tcl
+	@echo "GDS file exported to: designs/$(DESIGN_NAME)/results/$(DESIGN_NAME).gds"
+
+magic-gds-local:
+	@echo "Exporting GDS file for $(DESIGN_NAME) using local Magic..."
+	@mkdir -p designs/$(DESIGN_NAME)/results
+	@echo "load $(DESIGN_NAME)" > /tmp/magic_gds_local.tcl
+	@echo "gds write ../results/$(DESIGN_NAME).gds" >> /tmp/magic_gds_local.tcl
+	@echo "quit -noprompt" >> /tmp/magic_gds_local.tcl
+	@cd designs/$(DESIGN_NAME)/magic && magic -dnull -noconsole -T $(TECH_FILE_LOCAL) < /tmp/magic_gds_local.tcl
+	@rm -f /tmp/magic_gds_local.tcl
+	@echo "GDS file exported to: designs/$(DESIGN_NAME)/results/$(DESIGN_NAME).gds"
 
 # ------------------------------
 # Netgen
